@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BookVerse</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+<div class="container">
+
+    <!-- LEFT SIDE BACK BUTTON -->
+    <a href="index.html" class="btn btn-outline-light me-3">
+        ⬅ Back
+    </a>
+
+    <!-- CENTER TITLE -->
+    <a class="navbar-brand mx-auto" href="#">
+        📚 Books
+    </a>
+
+    <!-- RIGHT SIDE THEME BUTTON -->
+    <button onclick="toggleTheme()" 
+    class="btn btn-outline-light" id="themeBtn">
+        🌙
+    </button>
+	
+		
+    <a href="cart.html" class="btn btn-warning position-relative">
+        🛒 Cart
+        <span id="cartCount"
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        0
+        </span>
+    </a>
+
+</nav>
+</div>
+</nav>
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-6 mx-auto">
+            <input type="text" 
+                   id="searchInput"
+                   class="form-control form-control-lg"
+                   placeholder="🔍 Search books..."
+                   onkeyup="searchBooks()">
+        </div>
+    </div>
+</div>
+<p id="noResult" class="text-center text-danger fw-bold"></p>
+<div class="container mt-4">
+<div class="row g-4">
+
+<!-- Book 1 -->
+<div class="col-md-3 book-card">
+<div class="card">
+<img src="image/gita.jpg" class="card-img-top">
+<div class="card-body text-center">
+
+<h6>Bhagavad Gita</h6>
+
+<a href="https://www.gutenberg.org/ebooks/2388"
+target="_blank"
+class="btn btn-success btn-sm">
+Read Free
+</a>
+
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Bhagavad Gita',199,'image/gita.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+<!-- Book 2 -->
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/mahabharat.jpg">
+<div class="card-body text-center">
+<h6>Mahabharata</h6>
+<a href="https://archive.org/search?query=mahabharata"
+target="_blank" class="btn btn-success btn-sm">Read Free</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Mahabharata',249,'image/mahabharat.jpg')">
+Add to Cart 🛒
+</button>
+</div>
+</div>
+</div>
+<div class="col-md-3 mb-4">
+<div class="card">
+<img src="image/ramayan.jpg">
+<div class="card-body text-center">
+<h6>Ramayana</h6>
+<a href="https://archive.org/search?query=ramayana"
+target="_blank" class="btn btn-success btn-sm">Read Free</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Ramayana',229,'image/ramayan.jpg')">
+Add to Cart 🛒
+</button>
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/shyam.jpg">
+<div class="card-body text-center">
+<h6>Shyamchi Aai</h6>
+<a href="https://archive.org/search?query=shyamchi+aai"
+target="_blank" class="btn btn-success btn-sm">Read</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Shyamchi Aai',149,'image/shyam.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/dis.jpg">
+<div class="card-body text-center">
+<h6>Discovery of India</h6>
+<a href="https://archive.org/search?query=discovery+of+india"
+target="_blank" class="btn btn-success btn-sm">Read</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Discovery of India',299,'image/dis.jpg')">
+Add to Cart 🛒
+</button>
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/niti.jpg">
+<div class="card-body text-center">
+<h6>Chanakya Neeti</h6>
+<a href="https://archive.org/search?query=chanakya+neeti"
+target="_blank" class="btn btn-success btn-sm">Read</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Chanakya Neeti',179,'image/niti.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/sapi.jpg">
+<div class="card-body text-center">
+<h6>Sapiens</h6>
+<a href="https://openlibrary.org/search?q=sapiens"
+target="_blank" class="btn btn-success btn-sm">View</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Sapiens',399,'image/sapi.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/white.jpg">
+<div class="card-body text-center">
+<h6>The White Tiger</h6>
+<a href="https://openlibrary.org/search?q=the+white+tiger+aravind+adiga"
+target="_blank" class="btn btn-success btn-sm">View</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('The White Tiger',349,'image/white.jpg')">
+Add to Cart 🛒
+</button>
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/godan.jpg">
+<div class="card-body text-center">
+<h6>Godan</h6>
+<a href="https://archive.org/search?query=godan+premchand"
+target="_blank" class="btn btn-success btn-sm">Read</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Godan',199,'image/godan.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/guide.jpg">
+<div class="card-body text-center">
+<h6>The Guide</h6>
+<a href="https://openlibrary.org/search?q=the+guide+r.k.+narayan"
+target="_blank" class="btn btn-success btn-sm">View</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('The Guide',249,'image/guide.jpg')">
+Add to Cart 🛒
+</button>
+</div>
+</div>
+</div>
+
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/rich.jpg" class="card-img-top">
+<div class="card-body text-center">
+<h6>Rich Dad Poor Dad</h6>
+<a href="https://www.amazon.in/dp/1612680194" target="_blank" class="btn btn-success btn-sm">Read More</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Rich Dad Poor Dad',299,'image/rich.jpg')">
+Add to Cart 🛒
+</button>
+</div>
+</div>
+</div>
+
+<!-- Book 3 -->
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/atomic.jpg">
+<div class="card-body text-center">
+<h6>Atomic Habits</h6>
+<a href="https://www.amazon.in/dp/1847941834" target="_blank" class="btn btn-success btn-sm">Read More</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Atomic Habits',349,'image/atomic.jpg')">
+Add to Cart 🛒
+</button>
+</div>
+</div>
+</div>
+
+<!-- Book 4 -->
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/apj.jpg">
+<div class="card-body text-center">
+<h6>Wings of Fire</h6>
+<a href="https://www.amazon.in/dp/8173711461" target="_blank" class="btn btn-success btn-sm">Read More</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Wings of Fire',279,'image/apj.jpg')">
+Add to Cart 🛒
+</button>
+</div>
+</div>
+</div>
+
+<!-- Add More Books Below Same Pattern -->
+
+<!-- 5 -->
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/the.jpg">
+<div class="card-body text-center">
+<h6>The Alchemist</h6>
+<a href="https://www.amazon.in/dp/8172234988" target="_blank" class="btn btn-success btn-sm">Read More</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('The Alchemist',299,'image/the.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+
+<!-- 6 -->
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/think.jpg">
+<div class="card-body text-center">
+<h6>Think and Grow Rich</h6>
+<a href="https://www.amazon.in/dp/1585424331" target="_blank" class="btn btn-success btn-sm">Read More</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Think and Grow Rich',199,'image/think.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+
+<!-- 7 -->
+<div class="col-md-3 book-card"><div class="card">
+<img src="https://m.media-amazon.com/images/I/71tbalAHYCL.jpg" class="card-img-top">
+<div class="card-body text-center">
+<h6>Ikigai</h6>
+<a href="https://www.amazon.in/dp/178633089X" target="_blank" class="btn btn-success btn-sm">Read More</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Ikigai',329,'image/ikigai.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+
+<!-- 8 -->
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/deep.jpg">
+<div class="card-body text-center">
+<h6>Deep Work</h6>
+<a href="https://www.amazon.in/dp/1455586692" target="_blank" class="btn btn-success btn-sm">Read More</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Deep Work',299,'image/deep.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+
+<!-- 9 -->
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/zero.jpg">
+<div class="card-body text-center">
+<h6>Zero to One</h6>
+<a href="https://www.amazon.in/dp/0753555204" target="_blank" class="btn btn-success btn-sm">Read More</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Zero to One',249,'image/zero.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+
+<!-- 10 -->
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/power.jpg">
+<div class="card-body text-center">
+<h6>Power of Habit</h6>
+<a href="https://www.amazon.in/dp/1847946240" target="_blank" class="btn btn-success btn-sm">Read More</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Power of Habit',279,'image/power.jpg')">
+Add to Cart 🛒
+</button>
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/pride.jpg">
+<div class="card-body text-center">
+<h6>Pride and Prejudice</h6>
+<a href="https://www.gutenberg.org/ebooks/1342"
+target="_blank" class="btn btn-success btn-sm">Read Free</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Pride and Prejudice',159,'image/pride.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/home.jpg" class="card-img-top">
+<div class="card-body text-center">
+<h6>Sherlock Holmes</h6>
+<a href="https://www.gutenberg.org/ebooks/1661"
+target="_blank" class="btn btn-success btn-sm">Read Free</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Sherlock Holmes',189,'image/home.jpg')">
+Add to Cart 🛒
+</button>
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/moby.jpg" class="card-img-top">
+<div class="card-body text-center">
+<h6>Moby Dick</h6>
+<a href="https://www.gutenberg.org/ebooks/2701"
+target="_blank" class="btn btn-success btn-sm">Read Free</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Moby Dick',169,'image/moby.jpg')">
+Add to Cart 🛒
+</button>
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/alice.jpg" class="card-img-top">
+<div class="card-body text-center">
+<h6>Alice in Wonderland</h6>
+<a href="https://www.gutenberg.org/ebooks/11"
+target="_blank" class="btn btn-success btn-sm">Read Free</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Alice in Wonderland',149,'image/alice.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/war.jpg" class="card-img-top">
+<div class="card-body text-center">
+<h6>War and Peace</h6>
+<a href="https://www.gutenberg.org/ebooks/2600"
+target="_blank" class="btn btn-success btn-sm">Read Free</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('War and Peace',399,'image/war.jpg')">
+Add to Cart 🛒
+</button>
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/dracula.jpg" class="card-img-top">
+<div class="card-body text-center">
+<h6>Dracula</h6>
+<a href="https://www.gutenberg.org/ebooks/345"
+target="_blank" class="btn btn-success btn-sm">Read Free</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Dracula',199,'image/dracula.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/time.jpg" class="card-img-top">
+<div class="card-body text-center">
+<h6>The Time Machine</h6>
+<a href="https://www.gutenberg.org/ebooks/35"
+target="_blank" class="btn btn-success btn-sm">Read Free</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('The Time Machine',149,'image/time.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/jan.jpg" class="card-img-top">
+<div class="card-body text-center">
+<h6>Jane Eyre</h6>
+<a href="https://www.gutenberg.org/ebooks/1260"
+target="_blank" class="btn btn-success btn-sm">Read Free</a>
+<button class="btn btn-warning btn-sm"
+onclick="addToCart('Jane Eyre',189,'image/jan.jpg')">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+</div>
+<div class="col-md-3 book-card"><div class="card">
+<img src="image/tom.jpg" class="card-img-top">
+<div class="card-body text-center">
+<h6>Tom Sawyer</h6>
+<a href="https://www.gutenberg.org/ebooks/74"
+target="_blank" class="btn btn-success btn-sm">Read Free</a>
+<a href="cart.html" class="btn btn-warning position-relative">
+        🛒 Cart
+        <span id="cartCount"
+        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        </span>
+    </a>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<script src="script.js"></script>
+
+<link rel="stylesheet" href="style.css">
+<script>
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href="login.html";
+}
+
+// THEME APPLY ON LOAD
+function applyTheme(){
+    let theme = localStorage.getItem("theme");
+
+    if(theme === "light"){
+        document.body.classList.add("light-theme");
+    }
+}
+
+applyTheme();
+
+let found = false;
+
+books.forEach(function(book){
+    let title = book.querySelector("h6").innerText.toLowerCase();
+
+    if(title.includes(input)){
+        book.style.display = "";
+        found = true;
+    } else {
+        book.style.display = "none";
+    }
+});
+
+document.getElementById("noResult").innerText =
+    found ? "" : "No Books Found 📚";
+
+</script>
+<footer class="footer-badge">
+    © Copyrights All Right reserved 2026 <span id="year"></span> Book Universe | Designed by Raviraj 💙
+</footer>
+
+</body>
+</html>

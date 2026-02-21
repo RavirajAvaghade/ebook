@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Orders</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+
+<h2>📦 My Orders</h2>
+<hr>
+
+<div id="ordersContainer"></div>
+
+<script>
+
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href="login.html";
+}
+
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+let container = document.getElementById("ordersContainer");
+
+if(orders.length === 0){
+    container.innerHTML = "<p>No orders yet 😢</p>";
+}
+
+orders.forEach(order=>{
+
+    container.innerHTML += `
+    <div class="card mb-3 p-3">
+        <h5>Order ID: ${order.id}</h5>
+        <p>Date: ${order.date}</p>
+        <p>Total: ₹${order.total}</p>
+        <button class="btn btn-primary"
+        onclick="viewInvoice('${order.id}')">
+        View Invoice
+        </button>
+    </div>
+    `;
+});
+
+function viewInvoice(id){
+    window.location.href = "invoice.html?id=" + id;
+}
+
+</script>
+<footer class="footer-badge">
+    © Copyrights All Right reserved 2026 <span id="year"></span> Book Universe | Designed by Raviraj 💙
+</footer>
+</body>
+</html>

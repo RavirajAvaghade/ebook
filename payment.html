@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>QR Payment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+    background:linear-gradient(135deg,#141e30,#243b55);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Segoe UI;
+}
+
+.payment-card{
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    width:380px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+    animation:fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(-20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.qr-box{
+    margin:20px 0;
+}
+
+.total-box{
+    font-size:22px;
+    font-weight:600;
+    margin-top:15px;
+}
+
+button{
+    margin-top:20px;
+    width:100%;
+}
+</style>
+</head>
+<body>
+
+<div class="payment-card">
+
+<h4>📱 Scan & Pay</h4>
+
+<div class="qr-box">
+<img id="qrImage" width="200">
+</div>
+
+<div class="total-box">
+Total Amount: ₹<span id="totalAmount">0</span>
+</div>
+
+<button class="btn btn-success" onclick="confirmPayment()">
+Confirm Payment ✅
+</button>
+
+</div>
+
+<script>
+
+// CART मधून Total calculate
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let total = 0;
+
+cart.forEach(item=>{
+    total += item.price;
+});
+
+// Total display
+document.getElementById("totalAmount").innerText = total;
+
+// Dynamic QR generate (UPI format demo)
+let upiLink = "upi://pay?pa=bookverse@upi&pn=BookVerse&am=" + total + "&cu=INR";
+
+document.getElementById("qrImage").src =
+"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=BookVersePayment";
+
+// Payment confirm
+function confirmPayment(){
+
+    document.body.innerHTML = `
+    <div style="height:100vh;display:flex;align-items:center;justify-content:center;font-size:24px;color:white;background:#141e30;">
+        Processing Payment ⏳...
+    </div>`;
+
+    setTimeout(()=>{
+        localStorage.removeItem("cart");
+        window.location.href="success.html";
+    },2000);
+}
+</script>
+<footer class="footer-badge">
+    © Copyrights All Right reserved 2026 <span id="year"></span> Book Universe | Designed by Raviraj 💙
+</footer>
+</body>
+</html>

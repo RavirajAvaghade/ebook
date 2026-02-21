@@ -1,0 +1,254 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+.container {
+    padding-top: 40px;
+}
+
+.navbar {
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.card {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: 0.4s ease;
+}
+
+.card img {
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+/* REMOVE HEAVY OVERLAY */
+.card::before {
+    display: none;
+}
+
+/* Card Body */
+.card-body {
+    background: rgba(0,0,0,0.6);
+    padding: 15px;
+    text-align: center;
+}
+
+/* TITLE CLEAR FIX */
+.card h6 {
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-shadow: 0px 2px 5px rgba(0,0,0,0.8);
+}
+
+/* BUTTONS */
+.card .btn {
+    border-radius: 50px;
+    font-size: 13px;
+    padding: 6px 18px;
+    margin: 4px;
+    border: none;
+    transition: 0.3s ease;
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #00f2fe, #4facfe);
+}
+
+.btn-success:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #4facfe;
+}
+
+.btn-warning {
+    background: linear-gradient(45deg, #f7971e, #ffd200);
+    color: black;
+}
+
+.btn-warning:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #ffd200;
+}
+
+@media (max-width: 768px) {
+    .card img {
+        height: 220px;
+    }
+}
+/* Make row flex */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Equal height columns */
+.col-md-3 {
+    display: flex;
+}
+
+/* Card full height */
+.card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Fixed image container */
+.card img {
+    width: 100%;
+    height: 350/* ===============================
+   LIGHT THEME
+================================= */
+
+body.light-theme {
+    background: #f5f5f5;
+    color: #222;
+}
+
+body.light-theme .navbar {
+    background: #ffffff !important;
+}
+
+body.light-theme .card {
+    background: #ffffff;
+    color: #222;
+    border: 1px solid #ddd;
+}
+
+body.light-theme .card-body {
+    background: #ffffff;
+}
+
+body.light-theme .card h6 {
+    color: #111;
+}
+
+body.light-theme .btn-success {
+    background: #198754;
+}
+
+body.light-theme .btn-warning {
+    background: #ffc107;
+}
+	px;       /* same height for all */
+    object-fit: cover;   /* crop nicely */
+}
+
+/* Card body expand */
+.card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+/* Default Dark */
+.custom-navbar{
+    background:#111;
+    transition:0.4s ease;
+}
+
+/* Light Theme Navbar */
+body.light-theme .custom-navbar{
+    background:#ffffff;
+}
+
+body.light-theme .navbar-brand{
+    color:#000 !important;
+}
+
+/* Light Theme Cards */
+body.light-theme .card{
+    background:#ffffff;
+    color:#222;
+    border:1px solid #ddd;
+}
+
+body.light-theme .card-body{
+    background:#ffffff;
+}
+
+body.light-theme{
+    background:#f5f5f5;
+    color:#222;
+}
+
+
+body {
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    transition: 0.4s ease;
+
+}
+button{
+    position:relative;
+    overflow:hidden;
+}
+
+button::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:0;
+    background:rgba(255,255,255,0.4);
+    border-radius:50%;
+    transform:translate(-50%,-50%);
+    transition:width 0.4s ease, height 0.4s ease;
+}
+
+button:active::after{
+    width:200px;
+    height:200px;
+}
+@keyframes shake{
+    0%{transform:translateX(0);}
+    25%{transform:translateX(-5px);}
+    50%{transform:translateX(5px);}
+    75%{transform:translateX(-5px);}
+    100%{transform:translateX(0);}
+}
+
+.shake{
+    animation:shake 0.4s;
+}
+.footer-badge{
+    text-align:center;
+    padding:18px;
+    background:linear-gradient(90deg,#141e30,#243b55);
+    color:white;
+    font-size:14px;
+    letter-spacing:1px;
+    margin-top:40px;
+    animation:fadeFooter 1s ease;
+}
+
+@keyframes fadeFooter{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+.book-card{
+    transition: all 0.4s ease;
+}

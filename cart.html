@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Your Cart</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark bg-dark px-4">
+    <a href="books.html" class="btn btn-outline-light">⬅ Back</a>
+    <h4 class="text-white m-0">🛒 Your Cart</h4>
+</nav>
+
+<div class="container mt-4">
+
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Book</th>
+<th>Price</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="cart-items"></tbody>
+</table>
+
+<h4>Total: ₹<span id="total">0</span></h4>
+
+<button class="btn btn-success" onclick="goToPayment()">
+Checkout
+</button>
+</div>
+
+<script src="script.js"></script>
+<footer class="footer-badge">
+    © Copyrights All Right reserved 2026 <span id="year"></span> Book Universe | Designed by Raviraj 💙
+</footer>
+</body>
+</html>

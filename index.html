@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Book Universe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+
+<style>
+
+/* Smooth Transition */
+body{
+    transition: 0.4s ease;
+}
+
+/* ================= DARK THEME DEFAULT ================= */
+
+.custom-navbar{
+    background:#111;
+    transition:0.4s ease;
+}
+
+.hero {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+    url('https://images.unsplash.com/photo-1512820790803-83ca734da794') center/cover;
+    color: white;
+    transition:0.4s ease;
+}
+
+.hero h1 {
+    font-size: 55px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-top: 15px;
+    opacity: 0.9;
+}
+
+.hero .btn {
+    margin-top: 25px;
+    padding: 10px 30px;
+    font-size: 18px;
+    border-radius: 50px;
+    transition: 0.3s ease;
+}
+
+.hero .btn:hover {
+    transform: scale(1.1);
+}
+
+/* ================= LIGHT THEME ================= */
+
+body.light-theme {
+    background:#f5f5f5;
+    color:#222;
+}
+
+body.light-theme .custom-navbar{
+    background:#ffffff;
+}
+
+body.light-theme .navbar-brand{
+    color:#000 !important;
+}
+
+body.light-theme .hero{
+    background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.9)),
+    url('https://images.unsplash.com/photo-1512820790803-83ca734da794') center/cover;
+    color:#000;
+}
+/* ================= PAGE LOAD ANIMATION ================= */
+
+body {
+    opacity: 0;
+    animation: fadeInPage 1s ease forwards;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* HERO TEXT ANIMATION */
+
+.hero h1 {
+    animation: slideDown 1.2s ease;
+}
+
+.hero p {
+    animation: slideUp 1.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* BUTTON POP EFFECT */
+
+.hero .btn {
+    animation: popUp 1.8s ease;
+}
+
+@keyframes popUp {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Background subtle zoom */
+
+.hero {
+    animation: bgZoom 6s ease-in-out infinite alternate;
+}
+
+@keyframes bgZoom {
+    from { background-size: 100%; }
+    to { background-size: 105%; }
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+<div class="container">
+<a class="navbar-brand" href="#">📚 Book Universe</a>
+
+<div>
+<a href="explore.html" class="btn btn-outline-light ms-2">
+🔥 Trending
+</a>
+<a href="orders.html" class="btn btn-outline-light ms-2">
+📦 My Orders
+</a>
+<a href="community.html" class="btn btn-outline-light ms-2">
+👥 Community
+</a>
+<div id="authButtons" class="d-inline"></div>
+<button onclick="toggleTheme()" 
+class="btn btn-outline-light ms-2" id="themeBtn">
+🌙
+</button>
+
+
+</div>
+
+</div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+<div>
+<h1>Discover The World of Books 🌍</h1>
+<p>Read. Learn. Grow. Unlimited Knowledge Awaits You.</p>
+<a href="books.html" class="btn btn-warning">Start Reading 🚀</a>
+</div>
+</section>
+
+<script>
+
+// ================= LOGIN / LOGOUT =================
+
+function updateNavbar(){
+    let loggedIn = localStorage.getItem("loggedIn");
+    let nav = document.getElementById("authButtons");
+
+    if(loggedIn === "true"){
+        nav.innerHTML = `
+            <a href="books.html" class="btn btn-warning">Explore Books</a>
+            <button onclick="logout()" class="btn btn-danger ms-2">Logout</button>
+        `;
+    } else {
+        nav.innerHTML = `
+            <a href="login.html" class="btn btn-outline-light">Login</a>
+        `;
+    }
+}
+
+function logout(){
+    localStorage.removeItem("loggedIn");
+    alert("Logged Out Successfully 👋");
+    window.location.href="login.html";
+}
+
+updateNavbar();
+
+
+// ================= THEME TOGGLE =================
+
+function toggleTheme(){
+    document.body.classList.toggle("light-theme");
+
+    if(document.body.classList.contains("light-theme")){
+        localStorage.setItem("theme","light");
+        document.getElementById("themeBtn").innerHTML="☀️";
+    } else {
+        localStorage.setItem("theme","dark");
+        document.getElementById("themeBtn").innerHTML="🌙";
+    }
+}
+
+function loadTheme(){
+    let theme = localStorage.getItem("theme");
+
+    if(theme === "light"){
+        document.body.classList.add("light-theme");
+        document.getElementById("themeBtn").innerHTML="☀️";
+    }
+}
+
+loadTheme();
+
+</script>
+<footer class="footer-badge">
+    © Copyrights All Right reserved 2026 <span id="year"></span> Book Universe | Designed by Raviraj 💙
+</footer>
+
+<script>
+document.getElementById("year").innerText = new Date().getFullYear();
+</script>
+</body>
+</html>
